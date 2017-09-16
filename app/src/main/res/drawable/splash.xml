@@ -4,9 +4,7 @@
     <item
         android:drawable="@color/md_white_1000"/>
 
-    <item
-        android:height="200dp"
-        android:width="200dp">
+    <item>
         <bitmap
             android:gravity="center"
             android:src="@drawable/betu"/>
