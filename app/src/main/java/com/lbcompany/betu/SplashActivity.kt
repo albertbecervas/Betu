@@ -14,8 +14,11 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
 
         Handler().postDelayed({
-            val mainIntent = Intent(this@SplashActivity, MainActivity::class.java)
-            this@SplashActivity.startActivity(mainIntent)
+            if (AppSharedPreferences(this).getUserID() != "null") {
+                startActivity(Intent(this@SplashActivity, MainActivity::class.java))
+            } else {
+                startActivity(Intent(this@SplashActivity, LoginActivity::class.java))
+            }
             this@SplashActivity.finish()
         }, SPLASH_DISPLAY_LENGTH)
     }

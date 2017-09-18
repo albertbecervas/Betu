@@ -1,0 +1,45 @@
+{
+  "project_info": {
+    "project_number": "514731901536",
+    "firebase_url": "https://betu-2eb13.firebaseio.com",
+    "project_id": "betu-2eb13",
+    "storage_bucket": "betu-2eb13.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:514731901536:android:a191d5534ecc6fe1",
+        "android_client_info": {
+          "package_name": "com.lbcompany.betu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "514731901536-t3lt1ou3oou7h1hsbmr0idihq769vpig.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCrBrKFvrk8_1HJg8o8tN0ptFPBDcYwQ8o"
+        },
+        {
+          "current_key": "AIzaSyBkBEdAirEjbv-bFZ6UwPxedIe1K3Y0bIE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
