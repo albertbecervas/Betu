@@ -1,4 +1,4 @@
-package com.lbcompany.betu
+package com.lbcompany.betu.ui
 
 import android.content.Context
 import android.content.Intent
@@ -13,6 +13,8 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import android.widget.ImageView
+import com.lbcompany.betu.utils.AppSharedPreferences
+import com.lbcompany.betu.R
 import com.lbcompany.betu.adapter.MyBetsAdapter
 import com.lbcompany.betu.model.User
 import com.mikepenz.materialdrawer.AccountHeader

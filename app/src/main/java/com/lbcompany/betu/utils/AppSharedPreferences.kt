@@ -1,4 +1,4 @@
-package com.lbcompany.betu
+package com.lbcompany.betu.utils
 
 import android.content.Context
 import android.content.SharedPreferences

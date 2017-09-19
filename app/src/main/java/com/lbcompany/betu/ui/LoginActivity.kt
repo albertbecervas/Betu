@@ -1,9 +1,11 @@
-package com.lbcompany.betu
+package com.lbcompany.betu.ui
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.google.firebase.database.FirebaseDatabase
+import com.lbcompany.betu.utils.AppSharedPreferences
+import com.lbcompany.betu.R
 import com.lbcompany.betu.firebase.FirebaseLogin
 import com.lbcompany.betu.firebase.LoginCallback
 import com.lbcompany.betu.model.User

@@ -1,8 +1,9 @@
-package com.lbcompany.betu
+package com.lbcompany.betu.ui
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import com.lbcompany.betu.R
 import kotlinx.android.synthetic.main.toolbar_layout.*
 
 class ProfileActivity : AppCompatActivity() {

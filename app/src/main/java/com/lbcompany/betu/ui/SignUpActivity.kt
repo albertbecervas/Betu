@@ -1,10 +1,11 @@
-package com.lbcompany.betu
+package com.lbcompany.betu.ui
 
 import android.app.ProgressDialog
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.google.firebase.database.FirebaseDatabase
+import com.lbcompany.betu.R
 import com.lbcompany.betu.firebase.FirebaseSignUp
 import com.lbcompany.betu.firebase.SignupCallback
 import com.lbcompany.betu.model.User

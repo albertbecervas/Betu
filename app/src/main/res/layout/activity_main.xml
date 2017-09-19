@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?android:attr/colorPrimaryDark"
-    tools:context="com.lbcompany.betu.MainActivity"
+    tools:context="com.lbcompany.betu.ui.MainActivity"
     tools:targetApi="lollipop">
 
 
