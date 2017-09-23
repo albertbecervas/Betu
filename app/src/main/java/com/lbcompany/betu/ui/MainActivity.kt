@@ -13,9 +13,11 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import android.widget.ImageView
+import com.google.firebase.database.*
 import com.lbcompany.betu.utils.AppSharedPreferences
 import com.lbcompany.betu.R
 import com.lbcompany.betu.adapter.MyBetsAdapter
+import com.lbcompany.betu.model.Bet
 import com.lbcompany.betu.model.User
 import com.mikepenz.materialdrawer.AccountHeader
 import com.mikepenz.materialdrawer.AccountHeaderBuilder
@@ -32,13 +34,14 @@ import kotlinx.android.synthetic.main.toolbar_layout.*
 import org.jetbrains.anko.toast
 import java.io.ByteArrayOutputStream
 
-
 class MainActivity : AppCompatActivity() {
 
     private val PICK_IMAGE = 1
 
     private lateinit var headerResult: AccountHeader
     private lateinit var profileDrawerItem: ProfileDrawerItem
+
+    private lateinit var fbList: ArrayList<Bet>
 
     private lateinit var mPrefs: AppSharedPreferences
 
@@ -51,12 +54,11 @@ class MainActivity : AppCompatActivity() {
         setUser(mPrefs)
         setViews()
         setDrawer()
+    }
 
-        val list = ArrayList<Any>()
-        setAdapterList(list)
-        setCategoriesAdapter(list)
-        setMyBetsAdapter(list)
-        setPopularAdapter(list)
+    override fun onResume() {
+        super.onResume()
+        setFBAdapterList()
     }
 
     private fun setUser(mPrefs: AppSharedPreferences) {
@@ -68,14 +70,6 @@ class MainActivity : AppCompatActivity() {
     private fun setViews() {
         my_bets_layout.setOnClickListener {
             changeVisibility(my_bets_recycler)
-        }
-
-        most_popular_layout.setOnClickListener {
-            changeVisibility(most_popular_recycler)
-        }
-
-        categories_layout.setOnClickListener {
-            changeVisibility(categories_recycler)
         }
 
         create_bet.setOnClickListener { startActivity(Intent(this@MainActivity, CreateBetActivity::class.java)) }
@@ -183,7 +177,31 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun setMyBetsAdapter(list: ArrayList<Any>) {
+    fun setFBAdapterList() {
+        fbList = ArrayList()
+        val mDatabase = FirebaseDatabase.getInstance().reference
+
+        mDatabase.child("bets").addValueEventListener(object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError?) {
+                toast("error loading my bets")
+            }
+
+            override fun onDataChange(dataSnapshot: DataSnapshot?) {
+                dataSnapshot?.children?.iterator()?.forEach { ds ->
+                    val name = ds.child("betName").value as String?
+                    val description = ds.child("description").value as String?
+                    val firstOption = ds.child("option1").value as String?
+                    val secondOption = ds.child("option2").value as String?
+                    val betId = ds.key
+                    val bet = Bet(name,description,firstOption,secondOption, betId)
+                    fbList.add(bet)
+                }
+                setMyBetsAdapter(fbList)
+            }
+        })
+    }
+
+    private fun setMyBetsAdapter(list: ArrayList<Bet>) {
         my_bets_recycler.visibility = View.VISIBLE
         val mAdapter = MyBetsAdapter(this@MainActivity, list)
         val layoutManager = LinearLayoutManager(this@MainActivity)
@@ -191,34 +209,11 @@ class MainActivity : AppCompatActivity() {
         my_bets_recycler.adapter = mAdapter
     }
 
-    private fun setPopularAdapter(list: ArrayList<Any>) {
-        most_popular_recycler.visibility = View.VISIBLE
-        val mAdapter = MyBetsAdapter(this@MainActivity, list)
-        val layoutManager = LinearLayoutManager(this@MainActivity)
-        most_popular_recycler.layoutManager = layoutManager
-        most_popular_recycler.adapter = mAdapter
-    }
-
-    private fun setCategoriesAdapter(list: ArrayList<Any>) {
-        categories_recycler.visibility = View.VISIBLE
-        val mAdapter = MyBetsAdapter(this@MainActivity, list)
-        val layoutManager = LinearLayoutManager(this@MainActivity)
-        categories_recycler.layoutManager = layoutManager
-        categories_recycler.adapter = mAdapter
-    }
-
-    private fun setAdapterList(list: ArrayList<Any>) {
-        list.add("my first bet")
-        list.add("my second bet")
-        list.add("my third bet")
-        list.add("more bets...")
-    }
-
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (requestCode == PICK_IMAGE) {
-            val bitmap = getBitmapFromData(data!!)
+//            val bitmap = getBitmapFromData(data!!)
 //            imageView.setImageBitmap(bitmap)
         }
     }
@@ -240,6 +235,5 @@ class MainActivity : AppCompatActivity() {
 
         return photo
     }
-
 
 }

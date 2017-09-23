@@ -28,6 +28,8 @@ class FirebaseSignUp
 
     private val mCallback: SignupCallback
 
+    private lateinit var userId: String
+
     init {
         mAuth.addAuthStateListener(setAuthListener())
         mCallback = mContext as SignupCallback
@@ -47,8 +49,8 @@ class FirebaseSignUp
                 if (user != null) {
                     if (user.email != null) {
                         // User is signed in
+                        userId = user.uid
                         User.userID = user.uid
-                        mAuth.removeAuthStateListener(this)
                     }
                 }
             }

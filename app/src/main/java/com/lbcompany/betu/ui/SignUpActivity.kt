@@ -9,8 +9,8 @@ import com.lbcompany.betu.R
 import com.lbcompany.betu.firebase.FirebaseSignUp
 import com.lbcompany.betu.firebase.SignupCallback
 import com.lbcompany.betu.model.User
+import com.lbcompany.betu.utils.AppSharedPreferences
 import kotlinx.android.synthetic.main.activity_sign_up.*
-import org.jetbrains.anko.progressDialog
 import org.jetbrains.anko.toast
 
 class SignUpActivity : AppCompatActivity(), SignupCallback {
@@ -26,19 +26,19 @@ class SignUpActivity : AppCompatActivity(), SignupCallback {
         sign_up.setOnClickListener {
             checkFields()
 
-            dialog = progressDialog("Registering...")
+            dialog = ProgressDialog(this);
+            dialog!!.setTitle("Registering");
+            dialog!!.setMessage("Wait while loading...");
+            dialog!!.setCancelable(false); // disable dismiss by tapping outside of the dialog
+            dialog!!.show()
+
             User.username = username.text.toString()
-            User.name = name.text.toString()
-            FirebaseSignUp(this,mDatabase).CreateAuthUserWithEmailAndPassword(name.text.toString()
-                    + "@lbcompany.com",password.text.toString())
+            FirebaseSignUp(this, mDatabase).CreateAuthUserWithEmailAndPassword(username.text.toString()
+                    + "@lbcompany.com", password.text.toString())
         }
     }
 
     private fun checkFields() {
-        if (name.text.length < 3) {
-            name.error = "Minimum 3 characters"
-            return
-        }
         if (username.text.length < 3) {
             username.error = "Minimum 3 characters"
             return
@@ -52,7 +52,10 @@ class SignUpActivity : AppCompatActivity(), SignupCallback {
     override fun onSignUpSucceed() {
         toast("Sign up succeed")
         if (dialog!!.isShowing) dialog?.dismiss()
+        val mPrefs = AppSharedPreferences(this)
+        mPrefs.setUser(User.username.toString(), User.userID.toString())
         startActivity(Intent(this@SignUpActivity, MainActivity::class.java))
+        finish()
     }
 
     override fun onSignUpFailed() {

@@ -57,9 +57,12 @@ class FirebaseLogin
 
                                     override fun onDataChange(dataSnapshot: DataSnapshot?) {
                                         User.name = dataSnapshot?.child("name")?.value.toString()
+
+                                        databaseReference.removeEventListener(this)
                                     }
                                 }
                         )
+
 
                         User.username = username[0]
                         mCallback.onLoginSucced()
@@ -83,6 +86,7 @@ class FirebaseLogin
                     if (user.email != null) {
                         // User is signed in
                         User.userID = user.uid
+
                         mAuth.removeAuthStateListener(this)
                     }
                 }

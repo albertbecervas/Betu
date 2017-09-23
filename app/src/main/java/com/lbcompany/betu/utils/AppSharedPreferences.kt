@@ -32,10 +32,9 @@ class AppSharedPreferences(context: Context) {
 
     fun getUserID(): String = mSharedPreferences.getString("userID", "null")
 
-    fun setUser(username: String, name: String?, userID: String){
+    fun setUser(username: String, userID: String){
         mSharedPreferences.edit()
                 .putString("username", username)
-                .putString("name", name)
                 .putString("userID", userID)
                 .apply()
     }

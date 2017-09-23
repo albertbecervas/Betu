@@ -20,13 +20,11 @@
         android:id="@+id/spinner"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:maxHeight="100dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:entries="@array/country_arrays"
-        android:popupBackground="@color/md_white_1000"
+        android:popupBackground="@color/md_grey_600"
         android:prompt="@string/country_prompt"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -52,7 +50,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="BET NAME"
+            android:text="BET_NAME"
             android:textColor="@color/md_yellow_700"
             android:textStyle="bold"
             app:layout_constraintHorizontal_bias="0.068"
@@ -93,38 +91,22 @@
 
 
         <EditText
-            android:id="@+id/editText4"
-            android:layout_width="160dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="8dp"
+            android:id="@+id/value1"
+            android:layout_width="0dp"
+            android:layout_height="41dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
             android:background="@drawable/text_view_bg"
             android:hint="value 1"
             android:inputType="text"
-            android:paddingStart="10dp"
             android:paddingEnd="10dp"
+            android:paddingStart="10dp"
             android:textAlignment="textStart"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintLeft_toLeftOf="@+id/bet_name"
             app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView4" />
-
-        <EditText
-            android:id="@+id/editText2"
-            android:layout_width="100dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/text_view_bg"
-            android:hint="quote"
-            android:inputType="numberDecimal"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp"
-            android:textAlignment="textStart"
-            app:layout_constraintBottom_toBottomOf="@+id/editText4"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintLeft_toRightOf="@+id/editText4"
-            app:layout_constraintRight_toRightOf="@+id/bet_name"
-            app:layout_constraintTop_toTopOf="@+id/editText4"
-            app:layout_constraintVertical_bias="1.0" />
 
         <TextView
             android:id="@+id/textView5"
@@ -137,40 +119,26 @@
             app:layout_constraintHorizontal_bias="0.066"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText4" />
+            app:layout_constraintTop_toBottomOf="@+id/value1" />
 
         <EditText
-            android:id="@+id/editText5"
-            android:layout_width="160dp"
+            android:id="@+id/value2"
+            android:layout_width="0dp"
             android:layout_height="40dp"
-            android:layout_marginTop="14dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="12dp"
             android:background="@drawable/text_view_bg"
             android:hint="value 2"
             android:inputType="text"
-            android:paddingStart="10dp"
             android:paddingEnd="10dp"
+            android:paddingStart="10dp"
             android:textAlignment="textStart"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintLeft_toLeftOf="@+id/bet_name"
             app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView5" />
-
-        <EditText
-            android:id="@+id/editText7"
-            android:layout_width="100dp"
-            android:layout_height="40dp"
-            android:background="@drawable/text_view_bg"
-            android:hint="quote"
-            android:inputType="numberDecimal"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp"
-            android:textAlignment="textStart"
-            app:layout_constraintBottom_toBottomOf="@+id/editText5"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintLeft_toRightOf="@+id/editText4"
-            app:layout_constraintRight_toRightOf="@+id/bet_name"
-            app:layout_constraintTop_toTopOf="@+id/editText5"
-            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/textView6"
@@ -183,10 +151,10 @@
             app:layout_constraintHorizontal_bias="0.074"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText5" />
+            app:layout_constraintTop_toBottomOf="@+id/value2" />
 
         <EditText
-            android:id="@+id/editText9"
+            android:id="@+id/description"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_marginEnd="8dp"

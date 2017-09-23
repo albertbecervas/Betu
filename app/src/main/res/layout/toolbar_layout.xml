@@ -3,7 +3,7 @@
     android:layout_width="0dp"
     tools:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/colorPrimary"
+    android:background="@color/md_blue_grey_400"
     android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
     app:layout_constraintHorizontal_bias="1.0"
     app:layout_constraintLeft_toLeftOf="parent"

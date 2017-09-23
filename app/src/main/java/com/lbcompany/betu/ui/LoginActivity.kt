@@ -35,6 +35,7 @@ class LoginActivity : AppCompatActivity(), LoginCallback {
             mPrefs.setUser(User.username!!,User.name,User.userID!!)
         }
         startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+        finish()
     }
 
     override fun onLoginFailed(error: String?) {
