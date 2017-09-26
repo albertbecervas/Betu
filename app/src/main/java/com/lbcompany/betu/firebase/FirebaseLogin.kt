@@ -56,13 +56,15 @@ class FirebaseLogin
                                     }
 
                                     override fun onDataChange(dataSnapshot: DataSnapshot?) {
-                                        User.name = dataSnapshot?.child("name")?.value.toString()
+                                        User.userMoney = dataSnapshot?.child("money")?.value as Float?
+                                        mCallback.onLoginSucced()
+                                        databaseReference.removeEventListener(this)
                                     }
                                 }
                         )
 
+
                         User.username = username[0]
-                        mCallback.onLoginSucced()
                     } else {
                         mCallback.onLoginFailed(task.exception?.message)
                     }
@@ -83,7 +85,8 @@ class FirebaseLogin
                     if (user.email != null) {
                         // User is signed in
                         User.userID = user.uid
-                        mAuth.removeAuthStateListener(this)
+
+//                        mAuth.removeAuthStateListener(this)
                     }
                 }
             }

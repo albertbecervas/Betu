@@ -4,6 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.support.v7.app.AppCompatActivity
+import com.lbcompany.betu.ui.LoginActivity
+import com.lbcompany.betu.ui.MainActivity
+import com.lbcompany.betu.utils.AppSharedPreferences
 
 class SplashActivity : AppCompatActivity() {
 

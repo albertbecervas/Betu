@@ -28,6 +28,8 @@ class FirebaseSignUp
 
     private val mCallback: SignupCallback
 
+    private lateinit var userId: String
+
     init {
         mAuth.addAuthStateListener(setAuthListener())
         mCallback = mContext as SignupCallback
@@ -47,8 +49,8 @@ class FirebaseSignUp
                 if (user != null) {
                     if (user.email != null) {
                         // User is signed in
+                        userId = user.uid
                         User.userID = user.uid
-                        mAuth.removeAuthStateListener(this)
                     }
                 }
             }
@@ -68,9 +70,9 @@ class FirebaseSignUp
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(mContext as Activity) { task ->
                     if (task.isSuccessful) {
-                        val map = HashMap<String,String>()
-                        map.put("name", User.name!!)
+                        val map = HashMap<String, Any>()
                         map.put("username", User.username!!)
+                        map.put("money", 30.50F)
                         mDatabase.child("users").child(User.userID).setValue(map)
                         mCallback.onSignUpSucceed()
                     } else {

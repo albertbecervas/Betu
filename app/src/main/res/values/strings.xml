@@ -1,4 +1,15 @@
 <resources>
     <string name="app_name">BET.U</string>
     <string name="splash_phrase">Make it happen</string>
+
+    <string name="country_prompt">TYPE</string>
+
+    <string-array name="country_arrays">
+        <item>TYPE</item>
+        <item>SPORTS</item>
+        <item>POLITICS</item>
+        <item>SCIENCE</item>
+        <item>WEATHER</item>
+        <item>CUSTOM</item>
+    </string-array>
 </resources>
