@@ -1,15 +1,14 @@
 package com.lbcompany.betu.ui
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import com.google.firebase.database.FirebaseDatabase
-import com.lbcompany.betu.utils.AppSharedPreferences
 import com.lbcompany.betu.R
 import com.lbcompany.betu.firebase.FirebaseLogin
 import com.lbcompany.betu.firebase.LoginCallback
 import com.lbcompany.betu.model.User
-
+import com.lbcompany.betu.utils.AppSharedPreferences
 import kotlinx.android.synthetic.main.activity_login.*
 import org.jetbrains.anko.toast
 
@@ -21,7 +20,7 @@ class LoginActivity : AppCompatActivity(), LoginCallback {
         val mDatabase = FirebaseDatabase.getInstance().reference
 
         sign_in.setOnClickListener {
-            FirebaseLogin(this).signInAuthUserWithEmailAndPassword(name.text.toString() + "@lbcompany.com"
+            FirebaseLogin(this).signInAuthUserWithEmailAndPassword(username.text.toString() + "@lbcompany.com"
                     , password.text.toString(), mDatabase)
         }
 
@@ -32,7 +31,7 @@ class LoginActivity : AppCompatActivity(), LoginCallback {
         toast("Log in succeed")
         if (checkBox.isChecked) {
             val mPrefs = AppSharedPreferences(this)
-            mPrefs.setUser(User.username!!,User.name,User.userID!!)
+            mPrefs.setUser(User.username!!, User.userID!!, User.userMoney)
         }
         startActivity(Intent(this@LoginActivity, MainActivity::class.java))
         finish()

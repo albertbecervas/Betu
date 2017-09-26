@@ -53,7 +53,7 @@ class SignUpActivity : AppCompatActivity(), SignupCallback {
         toast("Sign up succeed")
         if (dialog!!.isShowing) dialog?.dismiss()
         val mPrefs = AppSharedPreferences(this)
-        mPrefs.setUser(User.username.toString(), User.userID.toString())
+        mPrefs.setUser(User.username.toString(), User.userID.toString(), 30F)
         startActivity(Intent(this@SignUpActivity, MainActivity::class.java))
         finish()
     }

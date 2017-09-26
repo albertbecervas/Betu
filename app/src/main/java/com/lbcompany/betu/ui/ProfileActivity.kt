@@ -1,28 +1,24 @@
 package com.lbcompany.betu.ui
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.view.MenuItem
+import com.google.firebase.database.FirebaseDatabase
+import com.lbcompany.betu.BaseActivity
 import com.lbcompany.betu.R
-import kotlinx.android.synthetic.main.toolbar_layout.*
+import com.lbcompany.betu.utils.AppSharedPreferences
+import kotlinx.android.synthetic.main.activity_profile.*
 
-class ProfileActivity : AppCompatActivity() {
+class ProfileActivity : BaseActivity() {
+    override fun getView(): Int {
+        return R.layout.activity_profile
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_profile)
 
-        setSupportActionBar(toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_keyboard_backspace_black)
-        supportActionBar?.title = ""
-        login.text = ""
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        if (item?.itemId == android.R.id.home) {
-            onBackPressed()
+        deposit.setOnClickListener {
+            val amounty = amount.text.toString()
+            val mDatabase = FirebaseDatabase.getInstance().reference
+            mDatabase.child("users").child(AppSharedPreferences(this@ProfileActivity).getUserID()).child("moneyToUpdate").setValue(amounty.toFloat())
         }
-        return true
     }
 }

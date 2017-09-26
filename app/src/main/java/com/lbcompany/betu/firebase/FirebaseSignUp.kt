@@ -70,9 +70,9 @@ class FirebaseSignUp
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(mContext as Activity) { task ->
                     if (task.isSuccessful) {
-                        val map = HashMap<String,String>()
-                        map.put("name", User.name!!)
+                        val map = HashMap<String, Any>()
                         map.put("username", User.username!!)
+                        map.put("money", 30.50F)
                         mDatabase.child("users").child(User.userID).setValue(map)
                         mCallback.onSignUpSucceed()
                     } else {

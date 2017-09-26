@@ -32,10 +32,10 @@ class MyBetsAdapter(private val context: Context, private val myBet: ArrayList<B
                     val map = HashMap<String, String>()
                     map.put("name", betName.toString())
                     map.put("description", description.toString())
-                    map.put("firstOption", firstOption.toString())
-                    map.put("secondOption", secondOption.toString())
+                    map.put("option1", firstOption.toString())
+                    map.put("option2", secondOption.toString())
                     map.put("betId", betId.toString())
-                    intent.putExtra("map", map)
+                    intent.putExtra("bet", map)
                     context.startActivity(intent)
                 }
 

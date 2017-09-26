@@ -165,7 +165,7 @@
             android:background="@drawable/text_view_bg"
             android:ems="10"
             android:hint="description"
-            android:inputType="numberDecimal"
+            android:inputType="text"
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
             android:textAlignment="textStart"
@@ -173,6 +173,25 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+        <EditText
+            android:id="@+id/cuote"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:ems="10"
+            android:inputType="number"
+            android:hint="Cuote"
+            android:textColorHint="@color/md_yellow_700"
+            android:textAlignment="center"
+            android:textColorHighlight="@color/md_yellow_700"
+            android:textColorLink="@color/md_yellow_700"
+            android:textColor="@color/md_yellow_700"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/description" />
 
     </android.support.constraint.ConstraintLayout>
 

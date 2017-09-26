@@ -5,38 +5,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark"
-    tools:context="com.lbcompany.betu.ui.BetDetailActivity">
+    tools:context="com.lbcompany.betu.ui.CloseBetActivity">
 
     <include layout="@layout/toolbar_layout"
         android:id="@+id/toolbar_include"/>
 
     <TextView
-        android:id="@+id/bet_name"
+        android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Referendum"
+        android:text="Winner option"
         android:textColor="@color/md_yellow_700"
-        android:textSize="30sp"
+        android:textSize="32sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar_include" />
 
-    <TextView
-        android:id="@+id/bet_description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="28dp"
-        android:text="Hi haurà referèndum l'1 d'Octubre?"
-        android:textColor="@color/md_white_1000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.143"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bet_name" />
     <include
         android:id="@+id/include2"
         layout="@layout/item_options_layout"
@@ -45,25 +33,23 @@
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/textView7"
+        app:layout_constraintVertical_bias="0.026" />
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton"
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/close_bet"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="316dp"
-        android:clickable="true"
+        android:layout_marginTop="76dp"
         android:background="@color/md_yellow_700"
-        app:layout_constraintBottom_toTopOf="@+id/include2"
+        android:text="CLOSE"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bet_description"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@android:drawable/ic_lock_lock" />
-
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include2"
+        app:layout_constraintVertical_bias="1.0" />
 
 </android.support.constraint.ConstraintLayout>
