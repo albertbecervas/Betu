@@ -5,7 +5,7 @@ const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 admin.initializeApp(functions.config().firebase);
 
-exports.updateUserMoney = functions.database.ref('/users/{uid}/moneyToUpdate')
+exports.updateUserMoney = functions.database.ref('/users/{uid}/moneyToUpdate/')
     .onWrite(event => {
         //const prev = event.data.previous.val();
         const curr = event.data.current.val();
@@ -93,6 +93,7 @@ function addParticipant(ref, uid, betId, option) {
         	var numberParticipants = snapshot.val()['numberParticipants'] + 1;
         	admin.database().ref(reference + "/participants/").set(prevBets);
         	admin.database().ref(reference + "/numberParticipants/").set(numberParticipants)
+        	admin.database().ref("/groupal_bets/" + betId + "/totalParticipants/").set()
 
     }, function (errorObject) {
         console.log(errorObject.message);

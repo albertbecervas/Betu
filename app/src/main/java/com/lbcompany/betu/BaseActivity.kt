@@ -62,7 +62,7 @@ abstract class BaseActivity : AppCompatActivity() {
             }
 
             override fun onDataChange(dS: DataSnapshot?) {
-                val doubleValue = dS?.value
+                val doubleValue = dS?.value ?: return
                 val float = java.lang.Float.valueOf(doubleValue.toString())
                 mPrefs.setUserMoney(float)
                 setUser()
