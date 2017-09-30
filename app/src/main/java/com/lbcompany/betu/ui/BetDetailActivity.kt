@@ -47,6 +47,8 @@ class BetDetailActivity : BaseActivity() {
             val betObject = HashMap<String,String>()
             betObject.put(betId.toString(),betId.toString())
             betObject.put("option", "option1")
+            if (mPrefs.getUserMoney() <= 0) return@setOnClickListener
+
             mDatabase.child("users").child(mPrefs.getUserID()).child("bets").child(betId).setValue(betObject)
 
             mPrefs.setUserMoney(mPrefs.getUserMoney() - 5)
@@ -57,6 +59,7 @@ class BetDetailActivity : BaseActivity() {
             val betObject = HashMap<String,String>()
             betObject.put(betId.toString(),betId.toString())
             betObject.put("option", "option2")
+            if (mPrefs.getUserMoney() <= 0) return@setOnClickListener
             mDatabase.child("users").child(mPrefs.getUserID()).child("bets").child(betId).setValue(betObject)
 
             mPrefs.setUserMoney(mPrefs.getUserMoney() - 5)
